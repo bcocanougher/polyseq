@@ -8,7 +8,7 @@ from sklearn.neighbors.kde import KernelDensity
 STYLE_CONTEXTS = ['seaborn-talk', 'seaborn-whitegrid']
 
 
-def violins(data, genes, groups=None, cluster_genes=True, figsize=(20, 20)):
+def violins(data, genes, groups=None, cluster_genes=True, figsize=(20, 20), colormap='jet'):
     ncols = len(genes)
     subset = data.copy()[genes]
 
@@ -27,7 +27,7 @@ def violins(data, genes, groups=None, cluster_genes=True, figsize=(20, 20)):
     f, axes = plt.subplots(1, ncols, sharey=True, figsize=figsize)
     f.subplots_adjust(wspace=0)
 
-    cmap = cm.get_cmap('tab10')
+    cmap = cm.get_cmap(colormap)
 
     for i in range(len(genes)):
         c = cmap((i % 10) / 10)
